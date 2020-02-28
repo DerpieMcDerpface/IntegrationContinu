@@ -1,0 +1,20 @@
+<project>
+    <target name="clean">
+        <delete dir="bin"/>
+    </target>
+    <target name="compile">
+        <mkdir dir="bin"/>
+            <javac destdir="bin" srcdir="src;tests" classpath="lib\junit.jar"/>
+    </target>
+    <target name="tests" depends="compile">
+        <junit>
+            <classpath>
+                <pathelement location="lib\junit.jar"/>
+                <pathelement location="lib\hamcrest.jar"/>
+                <pathelement location="${basedir}\bin"/>
+            </classpath>
+            <formatter type="xml"/>
+            <test name="triangle.TestTriangle" outfile="result"/>
+        </junit>
+    </target>
+</project>
